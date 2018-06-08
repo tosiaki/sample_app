@@ -4,7 +4,7 @@
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+workers Integer(ENV['WEB_CONCURRENCY'] || 2) unless Gem.win_platform?
 
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.

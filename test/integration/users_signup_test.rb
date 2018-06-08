@@ -33,5 +33,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert_not flash.empty?
     assert_select 'div', /welcome/i
+    assert is_logged_in?
   end
 end
