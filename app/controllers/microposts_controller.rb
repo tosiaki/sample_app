@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     i = Image.new
-    i.remote_file = params[micropost_params.picture]
+    i.remote_file = params[:micropost][:picture]
     i.save
     if @micropost.save
       flash[:success] = "Micropost created!"
