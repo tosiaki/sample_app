@@ -25,7 +25,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert assigns(:micropost).picture?
     assert_redirected_to root_url
     follow_redirect!
-    assert_match content, response.body
+    assert_select 'li', text: /#{content}/, count: 1
     # Delete post
     assert_select 'a', text: /delete/i
     first_micropost = @user.microposts.paginate(page: 1).first
